@@ -18,3 +18,7 @@ key residing in the environment variable \code{ATTACKERKB_API_KEY}.
 The easiest way to accomplish this is to set it
 in the \code{.Renviron} file in your home directory.
 }
+\details{
+You can obtain an AttackerKB API key by going visiting
+\strong{AttackerKB Profile Page > Settings > API Key.}
+}

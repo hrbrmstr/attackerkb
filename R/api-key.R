@@ -5,9 +5,12 @@
 #' The easiest way to accomplish this is to set it
 #' in the `.Renviron` file in your home directory.
 #'
+#' You can obtain an AttackerKB API key by going visiting
+#' **AttackerKB Profile Page > Settings > API Key.**
+#'
 #' @md
 #' @param force Force setting a new AttackerKB key for the current environment?
-#' @return atomic character vector containing the AttackerKB api key
+#' @return atomic character vector containing the AttackerKB API key
 #' @export
 attackerkb_api_key <- function(force = FALSE) {
 
@@ -19,7 +22,7 @@ attackerkb_api_key <- function(force = FALSE) {
          call. = FALSE)
   }
 
-  message("Couldn't find env var ATTACKERKB_API_KEY See ?ATTACKERKB_API_KEY for more details.")
+  message("Couldn't find env var ATTACKERKB_API_KEY See ?attackerkb_api_key for more details.")
   message("Please enter your API key:")
   pat <- readline(": ")
 
