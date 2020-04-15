@@ -4,9 +4,11 @@
 \name{attackerkb}
 \alias{attackerkb}
 \alias{attackerkb-package}
-\title{...}
+\title{Tools to Query the Rapid7 AttackerKB API}
 \description{
-A good description goes here otherwise CRAN checks fail.
+Rapid7 manages a service — \url{https://attackerkb.com/} - where experts can evaluate
+various aspects of emergent or existing vulnerabilities and the community can query and
+retrieve results. Tools are provides to query the AttackerKB API.
 }
 \seealso{
 Useful links:

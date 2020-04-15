@@ -1,6 +1,6 @@
 Package: attackerkb
 Type: Package
-Title: attackerkb title goes here otherwise CRAN checks fail
+Title: Tools to Query the Rapid7 AttackerKB API
 Version: 0.1.0
 Date: 2020-04-15
 Authors@R: c(
@@ -8,17 +8,20 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5670-2640"))
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: A good description goes here otherwise CRAN checks fail.
+Description: Rapid7 manages a service — <https://attackerkb.com/> - where experts can evaluate
+    various aspects of emergent or existing vulnerabilities and the community can query and
+    retrieve results. Tools are provides to query the AttackerKB API.
 URL: https://git.rud.is/hrbrmstr/attackerkb
 BugReports: https://git.rud.is/hrbrmstr/attackerkb/issues
 Encoding: UTF-8
-License: AGPL
+License: MIT + file LICENSE
 Suggests: 
     covr, tinytest
 Depends: 
     R (>= 3.2.0)
 Imports: 
     httr,
-    jsonlite
+    jsonlite,
+    data.table
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
