@@ -2,7 +2,7 @@
 #'
 #' Rapid7 manages a service — <https://attackerkb.com/> - where experts can evaluate
 #' various aspects of emergent or existing vulnerabilities and the community can query and
-#' retrieve results. Tools are provides to query the AttackerKB API.
+#' retrieve results. Tools are provided to query the AttackerKB API.
 #'
 #' @md
 #' @name attackerkb

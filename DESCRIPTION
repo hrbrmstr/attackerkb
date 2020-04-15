@@ -10,7 +10,7 @@ Authors@R: c(
 Maintainer: Bob Rudis <bob@rud.is>
 Description: Rapid7 manages a service — <https://attackerkb.com/> - where experts can evaluate
     various aspects of emergent or existing vulnerabilities and the community can query and
-    retrieve results. Tools are provides to query the AttackerKB API.
+    retrieve results. Tools are provided to query the AttackerKB API.
 URL: https://git.rud.is/hrbrmstr/attackerkb
 BugReports: https://git.rud.is/hrbrmstr/attackerkb/issues
 Encoding: UTF-8
