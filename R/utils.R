@@ -1,8 +1,17 @@
+date_convert <- function(.x) {
+  as.POSIXct(.x, format="%Y-%m-%dT%H:%M:%OS", tz="GMT")
+}
+
 .kb_reshape <- function(.x, path) {
+
+  if (length(.x) == 0) return(data.frame(stringsAsFactors=FALSE))
 
   if (path == "/topics") {
 
     easy_cols <- .x[, c("id", "editorId", "name", "created", "revisionDate", "disclosureDate", "document")]
+
+    easy_cols[["created"]] <- date_convert(easy_cols[["created"]])
+    easy_cols[["revisionDate"]] <- date_convert(easy_cols[["revisionDate"]])
 
     easy_cols$references <- .x[["metadata"]][["references"]]
 
@@ -46,11 +55,15 @@
 
   } else if (path == "/contributors") {
 
+    .x[["created"]] <- date_convert(.x[["created"]])
     .x
 
   } else if (path == "/assessments") {
 
     easy_cols <- .x[,c("id", "editorId", "topicId", "created", "revisionDate", "document", "score")]
+
+    easy_cols[["created"]] <- date_convert(easy_cols[["created"]])
+    easy_cols[["revisionDate"]] <- date_convert(easy_cols[["revisionDate"]])
 
     metadata <- easy_cols[["metadata"]]
 
@@ -79,6 +92,9 @@
 
 handle_response <- function(.x, api_key = attackerkb_api_key()) {
 
+  .pb <- progress::progress_bar$new(format = "(:spin)", total = NA)
+  .pb$tick()
+
   path <- .x[["links"]][["self"]][["href"]]
 
   ret <- .x[["data"]]
@@ -89,7 +105,7 @@ handle_response <- function(.x, api_key = attackerkb_api_key()) {
 
   while(length(next_href)) {
 
-    cat(".")
+    .pb$tick()
 
     httr::GET(
       url = sprintf("https://api.attackerkb.com%s", next_href),
@@ -107,8 +123,6 @@ handle_response <- function(.x, api_key = attackerkb_api_key()) {
     ret <- data.table::rbindlist(list(ret, .kb_reshape(out[["data"]], path)), fill = TRUE)
 
   }
-
-  cat("\n")
 
   class(ret) <- c("tbl_df", "tbl", "data.frame")
   ret

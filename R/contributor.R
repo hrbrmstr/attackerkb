@@ -3,6 +3,8 @@
 #' The main `kb_contributors` function maps 1:1 to the API. Leave values
 #' `NULL` that you do not want included in the search parameters.
 #'
+#' Set the option `progress_enabled` to `FALSE` to disable progress spinner.
+#'
 #' @param contributor_id UUID of a specific contributror to return
 #' @param username Return contributors with the matching username.
 #' @param avatar Return all contributors where avatar matches the given value

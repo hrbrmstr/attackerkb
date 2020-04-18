@@ -51,6 +51,9 @@ kb_topic(
 The main \code{kb_topics} function maps 1:1 to the API. Leave values
 \code{NULL} that you do not want included in the search parameters.
 }
+\details{
+Set the option \code{progress_enabled} to \code{FALSE} to disable progress spinner.
+}
 \references{
 \url{https://api.attackerkb.com/api-docs/docs}
 }

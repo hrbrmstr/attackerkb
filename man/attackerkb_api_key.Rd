@@ -10,7 +10,7 @@ attackerkb_api_key(force = FALSE)
 \item{force}{Force setting a new AttackerKB key for the current environment?}
 }
 \value{
-atomic character vector containing the AttackerKB api key
+atomic character vector containing the AttackerKB API key
 }
 \description{
 The API wrapper functions in this package all rely on a AttackerKB API

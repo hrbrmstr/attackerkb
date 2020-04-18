@@ -10,6 +10,10 @@ Rapid7 manages a service — \url{https://attackerkb.com/} - where experts can e
 various aspects of emergent or existing vulnerabilities and the community can query and
 retrieve results. Tools are provided to query the AttackerKB API.
 }
+\details{
+For all API calls, set the option \code{progress_enabled} to \code{FALSE} to disable
+progress spinner.
+}
 \seealso{
 Useful links:
 \itemize{

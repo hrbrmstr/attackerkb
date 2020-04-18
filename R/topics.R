@@ -3,6 +3,8 @@
 #' The main `kb_topics` function maps 1:1 to the API. Leave values
 #' `NULL` that you do not want included in the search parameters.
 #'
+#' Set the option `progress_enabled` to `FALSE` to disable progress spinner.
+#'
 #' @param topic_id UUID of a specific topic to return
 #' @param editor_id UUID of a contributor
 #' @param name Text to query the name attribute. A substring match is performed

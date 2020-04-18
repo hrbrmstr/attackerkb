@@ -3,6 +3,8 @@
 #' The main `kb_contributors` function maps 1:1 to the API. Leave values
 #' `NULL` that you do not want included in the search parameters.
 #'
+#' Set the option `progress_enabled` to `FALSE` to disable progress spinner.
+#'
 #' @param assessment_id UUID of a specific assessment to return
 #' @param editor_id  UUID of a contributor.
 #' @param topid_id UUID of the topic this assessment was based on.
