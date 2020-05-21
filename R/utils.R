@@ -53,6 +53,30 @@ date_convert <- function(.x) {
 
     easy_cols
 
+  } else if (path == "/topic") {
+
+    ## List of 10
+    ## $ created       : chr "2019-05-14T18:28:19.31074Z"
+    ## $ disclosureDate: chr "2019-05-16T19:29:00Z"
+    ## $ document      : chr "A bug in Windows Remote Desktop protocol allows unauthenticated users to run arbitrary code via a specially cra"| __truncated__
+    ## $ editorId      : chr "7191a637-aa4e-4885-98a0-f4f2da285b99"
+    ## $ id            : chr "131226a6-a1e9-48a1-a5d0-ac94baf8dfd2"
+    ## $ metadata      :List of 16
+    ## $ name          : chr "Windows Remote Desktop (RDP) Use-after-free vulnerablility, \"Bluekeep\""
+    ## $ revisionDate  : chr "2020-03-03T16:18:02.56368Z"
+    ## $ score         :List of 2
+    ## $ tags          :List of 12
+
+    .x[["created"]] <- date_convert(.x[["created"]])
+    .x[["disclosed"]] <- date_convert(.x[["disclosureDate"]])
+    .x[["metadata"]] <- I(list(.x[["metadata"]]))
+    .x[["score"]] <- I(list(.x[["score"]]))
+    .x[["tags"]] <- I(list(.x[["tags"]]))
+
+    .x <- as.data.frame(.x, stringsAsFactors = FALSE)
+
+    .x
+
   } else if (path == "/contributors") {
 
     .x[["created"]] <- date_convert(.x[["created"]])
@@ -90,12 +114,13 @@ date_convert <- function(.x) {
 
 }
 
-handle_response <- function(.x, api_key = attackerkb_api_key()) {
+handle_response <- function(.x, api_key = attackerkb_api_key(), came_from = NULL) {
 
   .pb <- progress::progress_bar$new(format = "(:spin)", total = NA)
   .pb$tick()
 
   path <- .x[["links"]][["self"]][["href"]]
+  if (length(path) == 0) path <- sub("^kb_", "/", came_from)
 
   ret <- .x[["data"]]
 

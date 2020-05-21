@@ -51,7 +51,7 @@ kb_contributors <- function(contributor_id = NULL,
   out <- httr::content(res, as = "text", encoding = "UTF-8")
   out <- jsonlite::fromJSON(out)
 
-  out <- handle_response(out)
+  out <- handle_response(out, api_key = api_key, came_from = "kb_contributors")
 
   out
 

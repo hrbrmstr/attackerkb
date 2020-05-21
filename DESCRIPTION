@@ -1,8 +1,8 @@
 Package: attackerkb
 Type: Package
 Title: Tools to Query the Rapid7 AttackerKB API
-Version: 0.1.1
-Date: 2020-04-18
+Version: 0.1.2
+Date: 2020-05-21
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
            comment = c(ORCID = "0000-0001-5670-2640"))
