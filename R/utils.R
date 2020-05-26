@@ -1,5 +1,9 @@
 date_convert <- function(.x) {
-  as.POSIXct(.x, format="%Y-%m-%dT%H:%M:%OS", tz="GMT")
+  if (length(.x)) {
+    as.POSIXct(.x, format="%Y-%m-%dT%H:%M:%OS", tz="GMT")
+  } else {
+    as.POSIXct(NA)
+  }
 }
 
 .kb_reshape <- function(.x, path) {
@@ -68,10 +72,18 @@ date_convert <- function(.x) {
     ## $ tags          :List of 12
 
     .x[["created"]] <- date_convert(.x[["created"]])
-    .x[["disclosed"]] <- date_convert(.x[["disclosureDate"]])
+    .x[["disclosureDate"]] <- date_convert(.x[["disclosureDate"]])
     .x[["metadata"]] <- I(list(.x[["metadata"]]))
     .x[["score"]] <- I(list(.x[["score"]]))
     .x[["tags"]] <- I(list(.x[["tags"]]))
+
+    if ("rapid7Analysis" %in% names(.x)) {
+      if (length(.x[["rapid7Analysis"]])) {
+        .x[["rapid7Analysis"]] <- paste0(.x[["rapid7Analysis"]], collapse = " ")
+      } else {
+        .x[["rapid7Analysis"]] <- NA_character_
+      }
+    }
 
     .x <- as.data.frame(.x, stringsAsFactors = FALSE)
 
