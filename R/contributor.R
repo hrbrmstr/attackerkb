@@ -32,7 +32,7 @@ kb_contributors <- function(contributor_id = NULL,
   if (length(created)) created <- as.character(as.Date(created[1]))
 
   httr::GET(
-    url = "https://api.attackerkb.com/contributors",
+    url = "https://api.attackerkb.com/v1/contributors",
     .ATTACKERKB_UA,
     query = list(
       id = contributor_id,
@@ -64,7 +64,7 @@ kd_contributor <- function(contributor_id, api_key = attackerkb_api_key()) {
   contributor_id <- contributor_id[1]
 
   httr::GET(
-    url = sprintf("https://api.attackerkb.com/contributors/%s", contributor_id),
+    url = sprintf("https://api.attackerkb.com/v1/contributors/%s", contributor_id),
     .ATTACKERKB_UA,
     httr::add_headers(`Authorization` = sprintf("basic %s", api_key))
   ) -> res

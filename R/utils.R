@@ -10,7 +10,7 @@ date_convert <- function(.x) {
 
   if (length(.x) == 0) return(data.frame(stringsAsFactors=FALSE))
 
-  if (path == "/topics") {
+  if (path == "/v1/topics") {
 
     easy_cols <- .x[, c("id", "editorId", "name", "created", "revisionDate", "disclosureDate", "document")]
 
@@ -57,7 +57,7 @@ date_convert <- function(.x) {
 
     easy_cols
 
-  } else if (path == "/topic") {
+  } else if (path == "/v1/topic") {
 
     ## List of 10
     ## $ created       : chr "2019-05-14T18:28:19.31074Z"
@@ -89,12 +89,12 @@ date_convert <- function(.x) {
 
     .x
 
-  } else if (path == "/contributors") {
+  } else if (path == "/v1/contributors") {
 
     .x[["created"]] <- date_convert(.x[["created"]])
     .x
 
-  } else if (path == "/assessments") {
+  } else if (path == "/v1/assessments") {
 
     easy_cols <- .x[,c("id", "editorId", "topicId", "created", "revisionDate", "document", "score")]
 
@@ -132,6 +132,7 @@ handle_response <- function(.x, api_key = attackerkb_api_key(), came_from = NULL
   .pb$tick()
 
   path <- .x[["links"]][["self"]][["href"]]
+
   if (length(path) == 0) path <- sub("^kb_", "/", came_from)
 
   ret <- .x[["data"]]

@@ -42,7 +42,7 @@ kb_assessments <- function(assessment_id = NULL,
   if (length(revised)) created <- as.character(as.Date(created[1]))
 
   httr::GET(
-    url = "https://api.attackerkb.com/assessments",
+    url = "https://api.attackerkb.com/v1/assessments",
     .ATTACKERKB_UA,
     query = list(
       id = assessment_id,
@@ -77,7 +77,7 @@ kb_assessment <- function(assessment_id, api_key = attackerkb_api_key()) {
   assessment_id <- assessment_id[1]
 
   httr::GET(
-    url = sprintf("https://api.attackerkb.com/assessments/%s", assessment_id),
+    url = sprintf("https://api.attackerkb.com/v1/assessments/%s", assessment_id),
     .ATTACKERKB_UA,
     httr::add_headers(`Authorization` = sprintf("basic %s", api_key))
   ) -> res

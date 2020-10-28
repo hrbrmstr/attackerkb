@@ -47,7 +47,7 @@ kb_topics <- function(topic_id = NULL,
   if (length(disclosed)) disclosed <- as.character(as.Date(disclosed[1]))
 
   httr::GET(
-    url = "https://api.attackerkb.com/topics",
+    url = "https://api.attackerkb.com/v1/topics",
     .ATTACKERKB_UA,
     query = list(
       id = topic_id,
@@ -81,7 +81,7 @@ kb_topics <- function(topic_id = NULL,
 kb_topic <- function(topic_id = "131226a6-a1e9-48a1-a5d0-ac94baf8dfd2", api_key = attackerkb_api_key()) {
 
   httr::GET(
-    url = sprintf("https://api.attackerkb.com/topics/%s", topic_id[1]),
+    url = sprintf("https://api.attackerkb.com/v1/topics/%s", topic_id[1]),
     .ATTACKERKB_UA,
     httr::add_headers(`Authorization` = sprintf("basic %s", api_key))
   ) -> res
