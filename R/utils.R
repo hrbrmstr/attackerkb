@@ -76,12 +76,29 @@ date_convert <- function(.x) {
     .x[["metadata"]] <- I(list(.x[["metadata"]]))
     .x[["score"]] <- I(list(.x[["score"]]))
     .x[["tags"]] <- I(list(.x[["tags"]]))
+    .x[["references"]] <- I(list(.x[["references"]]))
 
     if ("rapid7Analysis" %in% names(.x)) {
       if (length(.x[["rapid7Analysis"]])) {
         .x[["rapid7Analysis"]] <- paste0(.x[["rapid7Analysis"]], collapse = " ")
       } else {
         .x[["rapid7Analysis"]] <- NA_character_
+      }
+    }
+
+    if ("rapid7AnalysisCreated" %in% names(.x)) {
+      if (length(.x[["rapid7AnalysisCreated"]])) {
+        .x[["rapid7AnalysisCreated"]] <- paste0(.x[["rapid7AnalysisCreated"]], collapse = " ")
+      } else {
+        .x[["rapid7AnalysisCreated"]] <- NA_character_
+      }
+    }
+
+    if ("rapid7AnalysisRevisionDate" %in% names(.x)) {
+      if (length(.x[["rapid7AnalysisRevisionDate"]])) {
+        .x[["rapid7AnalysisRevisionDate"]] <- paste0(.x[["rapid7AnalysisRevisionDate"]], collapse = " ")
+      } else {
+        .x[["rapid7AnalysisRevisionDate"]] <- NA_character_
       }
     }
 
@@ -133,7 +150,7 @@ handle_response <- function(.x, api_key = attackerkb_api_key(), came_from = NULL
 
   path <- .x[["links"]][["self"]][["href"]]
 
-  if (length(path) == 0) path <- sub("^kb_", "/", came_from)
+  if (length(path) == 0) path <- sub("^kb_", "/v1/", came_from)
 
   ret <- .x[["data"]]
 
